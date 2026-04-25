@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Community Partners',
-  description: 'Community partners standing behind the GraphRAG Inference Hackathon — title, platform, infra, and community partners reaching builders worldwide.',
+  description: 'Community partners standing behind the GraphRAG Inference Hackathon — title, platform, and community partners reaching builders worldwide.',
 };
 
 const css = `
@@ -13,15 +13,16 @@ const css = `
     text-transform: uppercase; color: var(--ink-faint); }
   .partner-tier h2 { font-size: clamp(28px, 3vw, 40px); }
   .partner-grid { display: grid; gap: 16px; }
-  .partner-grid.gold { grid-template-columns: repeat(3, 1fr); }
-  .partner-grid.silver { grid-template-columns: repeat(4, 1fr); }
-  .partner-grid.community { grid-template-columns: repeat(5, 1fr); }
+  .partner-grid.gold { grid-template-columns: 1fr; }
+  .partner-grid.community { grid-template-columns: 1fr; }
   .partner { padding: 32px 24px; border-radius: 14px; background: var(--card);
     border: 1px solid var(--line); display: flex; flex-direction: column;
     align-items: flex-start; min-height: 160px; transition: all 0.25s ease; }
   .partner:hover { background: var(--card-hover); border-color: var(--line-strong); transform: translateY(-3px); }
   .partner.gold { background: linear-gradient(180deg, rgba(255,107,44,0.06), rgba(255,107,44,0.01));
     border-color: rgba(255,107,44,0.2); }
+  .partner.cyan { background: linear-gradient(180deg, rgba(77,217,255,0.06), rgba(77,217,255,0.01));
+    border-color: rgba(77,217,255,0.2); }
   .partner .logo-box { width: 100%; display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
   .partner .sigil { width: 44px; height: 44px; border-radius: 10px; background: rgba(180,195,230,0.06);
     border: 1px solid var(--line-strong); display: grid; place-items: center;
@@ -32,13 +33,6 @@ const css = `
   .partner .kind { font-family: 'JetBrains Mono', monospace; font-size: 10px;
     letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-top: 4px; }
   .partner p { color: var(--ink-dim); font-size: 13.5px; line-height: 1.5; margin-top: 8px; }
-  .partner.small { min-height: 96px; padding: 20px; flex-direction: row; align-items: center; gap: 12px; }
-  .partner.small .logo-box { margin-bottom: 0; }
-  @media (max-width: 900px) {
-    .partner-grid.gold { grid-template-columns: 1fr 1fr; }
-    .partner-grid.silver { grid-template-columns: 1fr 1fr; }
-    .partner-grid.community { grid-template-columns: 1fr 1fr; }
-  }
   .become { margin-top: 96px; padding: 48px; border-radius: 20px;
     background: radial-gradient(500px 300px at 100% 0%, rgba(77,217,255,0.08), transparent 60%),
                 radial-gradient(400px 300px at 0% 100%, rgba(255,107,44,0.08), transparent 60%),
@@ -48,20 +42,7 @@ const css = `
   .become h2 { font-size: clamp(28px, 3.2vw, 44px); }
   .become p { color: var(--ink-dim); margin-top: 14px; font-size: 16px; }
   @media (max-width: 900px) { .become { grid-template-columns: 1fr; padding: 32px; } }
-  .sample-banner { margin-top: 48px; padding: 14px 20px; border-radius: 12px;
-    border: 1px dashed rgba(255,180,60,0.6); background: rgba(255,180,60,0.06);
-    display: flex; align-items: center; gap: 12px;
-    font-family: 'JetBrains Mono', monospace; font-size: 12px;
-    letter-spacing: 0.08em; color: var(--ink-dim); }
-  .sample-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%;
-    background: #FFB340; box-shadow: 0 0 10px rgba(255,180,60,0.7); }
-  .sample-pill { margin-left: auto; border-color: rgba(255,180,60,0.4) !important;
-    color: #FFB340 !important; background: rgba(255,180,60,0.06) !important; }
 `;
-
-const sigil = (n) => <div className="sigil">{n}</div>;
-const ecoTile = (s, n, k) => (<div key={n} className="partner cyan"><div className="logo-box">{sigil(s)}<div><div className="name">{n}</div><div className="kind">{k}</div></div></div></div>);
-const commTile = (s, n, k) => (<div key={n} className="partner small"><div className="logo-box">{sigil(s)}<div><div className="name">{n}</div><div className="kind">{k}</div></div></div></div>);
 
 export default function PartnersPage() {
   return (
@@ -71,7 +52,7 @@ export default function PartnersPage() {
         <div className="container">
           <span className="eyebrow"><span className="line"></span>Community Partners · Powered by<span className="line"></span></span>
           <h1 className="display">The orgs<br/>standing <span className="grad-cyan">behind</span> this.</h1>
-          <p className="lead mt-3">Hackathons don&apos;t run themselves. Thanks to every community, campus group, and ecosystem partner helping us reach builders across the globe.</p>
+          <p className="lead mt-3">Hackathons don&apos;t run themselves. Thanks to every partner helping us reach builders across the globe.</p>
         </div>
       </section>
 
@@ -82,7 +63,7 @@ export default function PartnersPage() {
               <span className="t-label">Tier 01</span>
               <h2>Title Partner</h2>
             </div>
-            <div className="partner-grid gold" style={{ gridTemplateColumns: '1fr' }}>
+            <div className="partner-grid gold">
               <div className="partner gold" style={{ minHeight: 140, padding: 32 }}>
                 <div className="logo-box">
                   <img src="/assets/tigergraph-logo.png" alt="TigerGraph" style={{ height: 32 }} />
@@ -94,30 +75,21 @@ export default function PartnersPage() {
             </div>
           </div>
 
-          {/* SAMPLE PARTNERS BELOW (Tier 02, 03, 04). Replace with confirmed partners before launch. */}
-          <div className="sample-banner">
-            <span className="sample-dot"></span>
-            <span><b style={{ color: 'var(--ink)', letterSpacing: '0.12em' }}>SAMPLE PARTNERS BELOW</b> — Tiers 02 / 03 / 04 are placeholders pending confirmation. Update before launch.</span>
-          </div>
-
           <div className="partner-tier">
             <div className="t-head">
               <span className="t-label">Tier 02</span>
-              <h2>Platform &amp; Infra Partners</h2>
-              <span className="badge sample-pill">Sample · Pending</span>
+              <h2>Platform Partner</h2>
             </div>
             <div className="partner-grid gold">
-              <div className="partner gold">
-                <div className="logo-box">{sigil('UN')}<div><div className="name">Unstop</div><div className="kind">Registrations &amp; submissions</div></div></div>
+              <div className="partner gold" style={{ minHeight: 140, padding: 32 }}>
+                <div className="logo-box">
+                  <div className="sigil">UN</div>
+                  <div>
+                    <div className="name">Unstop</div>
+                    <div className="kind">Registrations &amp; submissions</div>
+                  </div>
+                </div>
                 <p>Official platform for registrations, team management, and final submissions.</p>
-              </div>
-              <div className="partner gold">
-                <div className="logo-box">{sigil('OP')}<div><div className="name">OpenAI</div><div className="kind">LLM credits partner</div></div></div>
-                <p>API credits and rate-limit uplifts for registered teams during the build phase.</p>
-              </div>
-              <div className="partner gold">
-                <div className="logo-box">{sigil('AW')}<div><div className="name">AWS</div><div className="kind">Compute credits</div></div></div>
-                <p>Cloud credits so teams can deploy their GraphRAG stack without sweating the bill.</p>
               </div>
             </div>
           </div>
@@ -125,38 +97,19 @@ export default function PartnersPage() {
           <div className="partner-tier">
             <div className="t-head">
               <span className="t-label">Tier 03</span>
-              <h2>Ecosystem Partners</h2>
-              <span className="badge sample-pill">Sample · Pending</span>
-            </div>
-            <div className="partner-grid silver">
-              {ecoTile('LC', 'LangChain', 'Framework')}
-              {ecoTile('LI', 'LlamaIndex', 'RAG tooling')}
-              {ecoTile('HF', 'Hugging Face', 'Models')}
-              {ecoTile('AN', 'Anthropic', 'Models')}
-              {ecoTile('GH', 'GitHub', 'Developer tools')}
-              {ecoTile('WA', 'Weights & Biases', 'Eval & tracking')}
-              {ecoTile('VC', 'Vercel', 'Deployments')}
-              {ecoTile('SB', 'Supabase', 'Backend')}
-            </div>
-          </div>
-
-          <div className="partner-tier">
-            <div className="t-head">
-              <span className="t-label">Tier 04</span>
-              <h2>Community &amp; Campus Partners</h2>
-              <span className="badge sample-pill">Sample · Pending</span>
+              <h2>Community Partner</h2>
             </div>
             <div className="partner-grid community">
-              {commTile('PC', 'PyData', 'Community')}
-              {commTile('GF', 'GDG India', 'Community')}
-              {commTile('MC', 'MLH', 'Hackers')}
-              {commTile('II', 'IIT Dev Club', 'Campus')}
-              {commTile('BI', 'BITS ACM', 'Campus')}
-              {commTile('KR', 'KerasCamp', 'Community')}
-              {commTile('DV', 'Devfolio', 'Builders')}
-              {commTile('OS', 'OSS India', 'Community')}
-              {commTile('NP', 'NPTEL Alumni', 'Campus')}
-              {commTile('RS', 'ReactSchool', 'Community')}
+              <div className="partner cyan" style={{ minHeight: 140, padding: 32 }}>
+                <div className="logo-box">
+                  <div className="sigil">BB</div>
+                  <div>
+                    <div className="name">Builder Base</div>
+                    <div className="kind">Community partner</div>
+                  </div>
+                </div>
+                <p>Bringing builders, campus clubs, and indie engineers into the hackathon — co-hosting events and helping new participants find their footing.</p>
+              </div>
             </div>
           </div>
 
