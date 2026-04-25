@@ -14,7 +14,9 @@ const css = `
   .partner-tier h2 { font-size: clamp(28px, 3vw, 40px); }
   .partner-grid { display: grid; gap: 16px; }
   .partner-grid.gold { grid-template-columns: 1fr; }
-  .partner-grid.community { grid-template-columns: 1fr; }
+  .partner-grid.community { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) { .partner-grid.community { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .partner-grid.community { grid-template-columns: 1fr; } }
   .partner { padding: 32px 24px; border-radius: 14px; background: var(--card);
     border: 1px solid var(--line); display: flex; flex-direction: column;
     align-items: flex-start; min-height: 160px; transition: all 0.25s ease; }
@@ -97,10 +99,10 @@ export default function PartnersPage() {
           <div className="partner-tier">
             <div className="t-head">
               <span className="t-label">Tier 03</span>
-              <h2>Community Partner</h2>
+              <h2>Community Partners</h2>
             </div>
             <div className="partner-grid community">
-              <div className="partner cyan" style={{ minHeight: 140, padding: 32 }}>
+              <div className="partner cyan">
                 <div className="logo-box">
                   <div className="sigil">BB</div>
                   <div>
@@ -109,6 +111,26 @@ export default function PartnersPage() {
                   </div>
                 </div>
                 <p>Bringing builders, campus clubs, and indie engineers into the hackathon — co-hosting events and helping new participants find their footing.</p>
+              </div>
+              <div className="partner cyan">
+                <div className="logo-box">
+                  <div className="sigil">GK</div>
+                  <div>
+                    <div className="name">GDG KIET</div>
+                    <div className="kind">Campus · Ghaziabad</div>
+                  </div>
+                </div>
+                <p>Google Developer Group at KIET Group of Institutions — running workshops and study jams to onboard students into GraphRAG.</p>
+              </div>
+              <div className="partner cyan">
+                <div className="logo-box">
+                  <div className="sigil">GI</div>
+                  <div>
+                    <div className="name">GDG IGDTUW</div>
+                    <div className="kind">Campus · Delhi</div>
+                  </div>
+                </div>
+                <p>Google Developer Group at Indira Gandhi Delhi Technical University for Women — championing women builders into the hackathon.</p>
               </div>
             </div>
           </div>
