@@ -1,27 +1,32 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 
+// 20 confirmed TigerGraph community leads, grouped by city.
+// Inner ring (first 8) = the four hub cities × 2 leads each;
+// outer ring (last 12) = the smaller-cohort cities.
 const LEADS = [
-  { name: 'Aarav Mehta',     role: 'Graph Engineer',      loc: 'Bengaluru, IN', tags: ['GSQL', 'Python'] },
-  { name: 'Priya Shankar',   role: 'AI Advocate',         loc: 'Hyderabad, IN', tags: ['LLMs', 'RAG'] },
-  { name: 'Rohan Iyer',      role: 'Developer Advocate',  loc: 'Mumbai, IN',    tags: ['GraphRAG'] },
-  { name: 'Ananya Rao',      role: 'Data Scientist',      loc: 'Pune, IN',      tags: ['Embeddings'] },
-  { name: 'Siddharth Bose',  role: 'ML Engineer',         loc: 'Delhi, IN',     tags: ['Evaluation'] },
-  { name: 'Ishita Kapoor',   role: 'Backend Engineer',    loc: 'Chennai, IN',   tags: ['TigerGraph'] },
-  { name: 'Vikram Singh',    role: 'Solutions Architect', loc: 'Gurugram, IN',  tags: ['Scale'] },
-  { name: 'Nisha Patel',     role: 'Community Lead',      loc: 'Ahmedabad, IN', tags: ['Events'] },
-  { name: 'Karthik Raman',   role: 'Research Engineer',   loc: 'Bengaluru, IN', tags: ['Graph ML'] },
-  { name: 'Zara Fernandez',  role: 'Developer Advocate',  loc: 'Goa, IN',       tags: ['Docs'] },
-  { name: "Liam O'Connor",   role: 'Graph Consultant',    loc: 'Dublin, IE',    tags: ['Cypher', 'GSQL'] },
-  { name: 'Mei Chen',        role: 'ML Engineer',         loc: 'Singapore',     tags: ['Vector', 'Graph'] },
-  { name: 'Sofia Alvarez',   role: 'AI Engineer',         loc: 'Barcelona, ES', tags: ['RAG', 'Eval'] },
-  { name: 'Hiroshi Tanaka',  role: 'Data Engineer',       loc: 'Tokyo, JP',     tags: ['Pipelines'] },
-  { name: 'Amara Okafor',    role: 'Developer Advocate',  loc: 'Lagos, NG',     tags: ['Onboarding'] },
-  { name: 'Lucas Schmidt',   role: 'Graph Architect',     loc: 'Berlin, DE',    tags: ['Ontology'] },
-  { name: 'Fatima Al-Rashid',role: 'AI Researcher',       loc: 'Dubai, AE',     tags: ['Reasoning'] },
-  { name: 'Noah Thompson',   role: 'Solutions Engineer',  loc: 'Austin, US',    tags: ['Prod RAG'] },
-  { name: 'Isabella Rossi',  role: 'Backend Engineer',    loc: 'Milan, IT',     tags: ['APIs'] },
-  { name: 'Daniel Park',     role: 'ML Engineer',         loc: 'Seoul, KR',     tags: ['Inference'] },
+  // Inner ring · 4 hub cities × 2
+  { name: 'Amit Kumar Dubey',    role: 'Community Lead', loc: 'Delhi, IN',     tags: ['GraphRAG'] },
+  { name: 'Kafeel Khan',         role: 'Community Lead', loc: 'Delhi, IN',     tags: ['GraphRAG'] },
+  { name: 'Abdul Affou',         role: 'Community Lead', loc: 'Bangalore, IN', tags: ['GraphRAG'] },
+  { name: 'Darshan Krishna',     role: 'Community Lead', loc: 'Bangalore, IN', tags: ['GraphRAG'] },
+  { name: 'Jayant',              role: 'Community Lead', loc: 'Hyderabad, IN', tags: ['GraphRAG'] },
+  { name: 'Saimanoj',            role: 'Community Lead', loc: 'Hyderabad, IN', tags: ['GraphRAG'] },
+  { name: 'Prashant',            role: 'Community Lead', loc: 'Gurgaon, IN',   tags: ['GraphRAG'] },
+  { name: 'Keshav',              role: 'Community Lead', loc: 'Gurgaon, IN',   tags: ['GraphRAG'] },
+  // Outer ring · the rest
+  { name: 'Pritu',               role: 'Community Lead', loc: 'Noida, IN',     tags: ['GraphRAG'] },
+  { name: 'Aryan',               role: 'Community Lead', loc: 'Noida, IN',     tags: ['GraphRAG'] },
+  { name: 'Almas',               role: 'Community Lead', loc: 'Pune, IN',      tags: ['GraphRAG'] },
+  { name: 'Nandini',             role: 'Community Lead', loc: 'Mumbai, IN',    tags: ['GraphRAG'] },
+  { name: 'Vama Shah',           role: 'Community Lead', loc: 'Mumbai, IN',    tags: ['GraphRAG'] },
+  { name: 'Santosh Kumar Verma', role: 'Community Lead', loc: 'Jharkhand, IN', tags: ['GraphRAG'] },
+  { name: 'Debojyoti',           role: 'Community Lead', loc: 'Kolkata, IN',   tags: ['GraphRAG'] },
+  { name: 'Rohan Kumar',         role: 'Community Lead', loc: 'Kolkata, IN',   tags: ['GraphRAG'] },
+  { name: 'Sriz',                role: 'Community Lead', loc: 'Kolkata, IN',   tags: ['GraphRAG'] },
+  { name: 'Utkarsh Arjariya',    role: 'Community Lead', loc: 'Bhopal, IN',    tags: ['GraphRAG'] },
+  { name: 'Shashwat Shukla',     role: 'Community Lead', loc: 'Bhopal, IN',    tags: ['GraphRAG'] },
+  { name: 'Shubh',               role: 'Community Lead', loc: 'Jaipur, IN',    tags: ['GraphRAG'] },
 ];
 
 const initials = (name) => name.split(/\s+/).map(s => s[0]).slice(0, 2).join('').toUpperCase();
