@@ -229,9 +229,26 @@ h4 { font-size: 18px; font-weight: 600; }
   gap: 12px;
   margin-right: auto;
 }
-.nav-brand img { height: 22px; width: auto; display: block; }
+.nav-brand img { height: 28px; width: auto; display: block; }
 .nav-brand .pipe {
   width: 1px; height: 18px; background: var(--line-strong);
+}
+
+/* TigerGraph logo: dark wordmark on transparent BG.
+   Light theme renders as-is. Dark theme converts to a white
+   silhouette so the wordmark stays legible against navy. */
+.nav-brand img,
+.footer-brand img,
+.about-hero img,
+.partner.gold .logo-box img {
+  filter: brightness(0) invert(1);
+  transition: filter 0.25s ease;
+}
+:root[data-theme="light"] .nav-brand img,
+:root[data-theme="light"] .footer-brand img,
+:root[data-theme="light"] .about-hero img,
+:root[data-theme="light"] .partner.gold .logo-box img {
+  filter: none;
 }
 .nav-brand .ev {
   font-family: 'JetBrains Mono', monospace;
@@ -438,7 +455,7 @@ h4 { font-size: 18px; font-weight: 600; }
   .nav-inner { padding: 14px 20px; gap: 12px; position: relative; }
   .nav-brand .ev { display: none; }
   .nav-brand .pipe { display: none; }
-  .nav-brand img { height: 20px; }
+  .nav-brand img { height: 24px; }
   .nav-brand { margin-right: 0; }
   .nav-burger { display: flex; }
 
