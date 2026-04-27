@@ -112,26 +112,6 @@ export default function PartnersPage() {
                 </div>
                 <p>Bringing builders, campus clubs, and indie engineers into the hackathon — co-hosting events and helping new participants find their footing.</p>
               </div>
-              <div className="partner cyan">
-                <div className="logo-box">
-                  <div className="sigil">GK</div>
-                  <div>
-                    <div className="name">GDG KIET</div>
-                    <div className="kind">Campus · Ghaziabad</div>
-                  </div>
-                </div>
-                <p>Google Developer Group at KIET Group of Institutions — running workshops and study jams to onboard students into GraphRAG.</p>
-              </div>
-              <div className="partner cyan">
-                <div className="logo-box">
-                  <div className="sigil">GI</div>
-                  <div>
-                    <div className="name">GDG IGDTUW</div>
-                    <div className="kind">Campus · Delhi</div>
-                  </div>
-                </div>
-                <p>Google Developer Group at Indira Gandhi Delhi Technical University for Women — championing women builders into the hackathon.</p>
-              </div>
             </div>
           </div>
 
