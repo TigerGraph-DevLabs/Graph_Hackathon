@@ -109,11 +109,13 @@ export default function AboutPage() {
         </div>
         <div className="container wrap">
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>
-            <img src="/assets/tigergraph-logo.png" alt="TigerGraph" style={{ height: 32 }} />
+            <a href="https://tigergraph.com" target="_blank" rel="noopener" aria-label="Visit TigerGraph.com">
+              <img src="/assets/tigergraph-logo.png" alt="TigerGraph" style={{ height: 32, display: 'block' }} />
+            </a>
             <span className="badge orange">About TigerGraph</span>
           </div>
           <h1 className="display">The graph database<br/>built for <span className="grad-orange">real-time AI.</span></h1>
-          <p>TigerGraph is a distributed, scalable graph database platform used by enterprises to solve problems where <b style={{ color: 'var(--ink)' }}>relationships matter more than rows</b> — fraud detection, supply chain, recommendations, customer 360, and now, the frontier: GraphRAG.</p>
+          <p><a href="https://tigergraph.com" target="_blank" rel="noopener" style={{ color: 'inherit', textDecoration: 'underline', textDecorationColor: 'rgba(255,107,44,0.5)', textUnderlineOffset: 3 }}>TigerGraph</a> is a distributed, scalable graph database platform used by enterprises to solve problems where <b style={{ color: 'var(--ink)' }}>relationships matter more than rows</b> — fraud detection, supply chain, recommendations, customer 360, and now, the frontier: GraphRAG.</p>
         </div>
       </section>
 
