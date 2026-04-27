@@ -6,27 +6,27 @@ import { useEffect, useRef, useState } from 'react';
 // outer ring (last 12) = the smaller-cohort cities.
 const LEADS = [
   // Inner ring · 4 hub cities × 2
-  { name: 'Amit Kumar Dubey',    role: 'Community Lead', loc: 'Delhi, IN',     tags: ['GraphRAG'] },
-  { name: 'Kafeel Khan',         role: 'Community Lead', loc: 'Delhi, IN',     tags: ['GraphRAG'] },
-  { name: 'Abdul Affou',         role: 'Community Lead', loc: 'Bangalore, IN', tags: ['GraphRAG'] },
+  { name: 'Amit Kumar Dubey',    role: 'Community Lead', loc: 'Delhi, IN',     tags: ['GraphRAG'], social: 'https://www.linkedin.com/in/amit-dubey-1a564b202' },
+  { name: 'Kafeel Khan',         role: 'Community Lead', loc: 'Delhi, IN',     tags: ['GraphRAG'], social: 'https://www.linkedin.com/in/kafeel001khan' },
+  { name: 'Abdul Affou',         role: 'Community Lead', loc: 'Bangalore, IN', tags: ['GraphRAG'], social: 'https://linkedin.com/in/abdulaffou' },
   { name: 'Darshan Krishna',     role: 'Community Lead', loc: 'Bangalore, IN', tags: ['GraphRAG'] },
   { name: 'Jayant',              role: 'Community Lead', loc: 'Hyderabad, IN', tags: ['GraphRAG'] },
   { name: 'Saimanoj',            role: 'Community Lead', loc: 'Hyderabad, IN', tags: ['GraphRAG'] },
-  { name: 'Prashant',            role: 'Community Lead', loc: 'Gurgaon, IN',   tags: ['GraphRAG'] },
-  { name: 'Keshav',              role: 'Community Lead', loc: 'Gurgaon, IN',   tags: ['GraphRAG'] },
+  { name: 'Prashant',            role: 'Community Lead', loc: 'Gurgaon, IN',   tags: ['GraphRAG'], social: 'https://www.linkedin.com/in/prashant6743/' },
+  { name: 'Keshav',              role: 'Community Lead', loc: 'Gurgaon, IN',   tags: ['GraphRAG'], social: 'https://www.linkedin.com/in/keshav-kumar-3649812b5/' },
   // Outer ring · the rest
   { name: 'Pritu',               role: 'Community Lead', loc: 'Noida, IN',     tags: ['GraphRAG'] },
-  { name: 'Aryan',               role: 'Community Lead', loc: 'Noida, IN',     tags: ['GraphRAG'] },
+  { name: 'Punit Pal',           role: 'Community Lead', loc: 'Noida, IN',     tags: ['GraphRAG'], social: 'https://www.linkedin.com/in/punit05' },
   { name: 'Almas',               role: 'Community Lead', loc: 'Pune, IN',      tags: ['GraphRAG'] },
-  { name: 'Nandini',             role: 'Community Lead', loc: 'Mumbai, IN',    tags: ['GraphRAG'] },
-  { name: 'Vama Shah',           role: 'Community Lead', loc: 'Mumbai, IN',    tags: ['GraphRAG'] },
-  { name: 'Santosh Kumar Verma', role: 'Community Lead', loc: 'Jharkhand, IN', tags: ['GraphRAG'] },
-  { name: 'Debojyoti',           role: 'Community Lead', loc: 'Kolkata, IN',   tags: ['GraphRAG'] },
-  { name: 'Rohan Kumar',         role: 'Community Lead', loc: 'Kolkata, IN',   tags: ['GraphRAG'] },
-  { name: 'Sriz',                role: 'Community Lead', loc: 'Kolkata, IN',   tags: ['GraphRAG'] },
-  { name: 'Utkarsh Arjariya',    role: 'Community Lead', loc: 'Bhopal, IN',    tags: ['GraphRAG'] },
-  { name: 'Shashwat Shukla',     role: 'Community Lead', loc: 'Bhopal, IN',    tags: ['GraphRAG'] },
-  { name: 'Shubh',               role: 'Community Lead', loc: 'Jaipur, IN',    tags: ['GraphRAG'] },
+  { name: 'Nandini',             role: 'Community Lead', loc: 'Mumbai, IN',    tags: ['GraphRAG'], social: 'https://linktr.ee/heyfromnandiniii' },
+  { name: 'Vama Shah',           role: 'Community Lead', loc: 'Mumbai, IN',    tags: ['GraphRAG'], social: 'https://www.linkedin.com/in/vamashah21/' },
+  { name: 'Santosh Kumar Verma', role: 'Community Lead', loc: 'Jharkhand, IN', tags: ['GraphRAG'], social: 'https://www.linkedin.com/in/santoshverma77/' },
+  { name: 'Debojyoti',           role: 'Community Lead', loc: 'Kolkata, IN',   tags: ['GraphRAG'], social: 'https://www.linkedin.com/in/debojyoti-de-majumder-48052b30b/' },
+  { name: 'Rohan Kumar',         role: 'Community Lead', loc: 'Kolkata, IN',   tags: ['GraphRAG'], social: 'https://x.com/Roan0i' },
+  { name: 'Sriz',                role: 'Community Lead', loc: 'Kolkata, IN',   tags: ['GraphRAG'], social: 'https://linkedin.com/in/srizdebnath' },
+  { name: 'Utkarsh Arjariya',    role: 'Community Lead', loc: 'Bhopal, IN',    tags: ['GraphRAG'], social: 'https://x.com/Utkarsh_A7' },
+  { name: 'Shashwat Shukla',     role: 'Community Lead', loc: 'Bhopal, IN',    tags: ['GraphRAG'], social: 'https://www.linkedin.com/in/shashwat-shukla-4b2a8a375' },
+  { name: 'Shubh',               role: 'Community Lead', loc: 'Jaipur, IN',    tags: ['GraphRAG'], social: 'https://www.linkedin.com/in/shubham-karwa-70a7b71b8' },
 ];
 
 const initials = (name) => name.split(/\s+/).map(s => s[0]).slice(0, 2).join('').toUpperCase();
@@ -57,10 +57,16 @@ export default function CommunityLeadsView() {
       });
 
       positions.forEach((pos, idx) => {
-        const el = document.createElement('div');
+        const hasSocial = !!pos.p.social;
+        const el = document.createElement(hasSocial ? 'a' : 'div');
         el.className = 'node' + (idx % 3 === 0 ? ' orange' : '');
         el.style.left = pos.x + 'px';
         el.style.top  = pos.y + 'px';
+        if (hasSocial) {
+          el.href = pos.p.social;
+          el.target = '_blank';
+          el.rel = 'noopener noreferrer';
+        }
         el.innerHTML = `${initials(pos.p.name)}<span class="tip">${pos.p.name}<span class="role">${pos.p.role} · ${pos.p.loc}</span></span>`;
         net.appendChild(el);
       });
@@ -118,20 +124,26 @@ export default function CommunityLeadsView() {
           </div>
 
           <div className={`view grid-view ${view === 'grid' ? 'show' : ''}`}>
-            {LEADS.map((l) => (
-              <div key={l.name} className="lead-card">
-                <div className="av">{initials(l.name)}</div>
-                <div className="name">{l.name}</div>
-                <div className="role">{l.role}</div>
-                <div className="loc">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
-                  </svg>
-                  {l.loc}
-                </div>
-                <div className="tags">{l.tags.map(t => <span key={t} className="tag">{t}</span>)}</div>
-              </div>
-            ))}
+            {LEADS.map((l) => {
+              const Wrap = l.social ? 'a' : 'div';
+              const wrapProps = l.social
+                ? { href: l.social, target: '_blank', rel: 'noopener noreferrer' }
+                : {};
+              return (
+                <Wrap key={l.name} className="lead-card" {...wrapProps}>
+                  <div className="av">{initials(l.name)}</div>
+                  <div className="name">{l.name}</div>
+                  <div className="role">{l.role}</div>
+                  <div className="loc">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+                    </svg>
+                    {l.loc}
+                  </div>
+                  <div className="tags">{l.tags.map(t => <span key={t} className="tag">{t}</span>)}</div>
+                </Wrap>
+              );
+            })}
           </div>
         </div>
       </section>

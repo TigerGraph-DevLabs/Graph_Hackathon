@@ -65,7 +65,10 @@ const css = `
   .network .node:hover .tip { opacity: 1; }
   .grid-view { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
   .lead-card { padding: 24px; border-radius: 14px; background: var(--card);
-    border: 1px solid var(--line); transition: all 0.25s ease; }
+    border: 1px solid var(--line); transition: all 0.25s ease;
+    text-decoration: none; color: inherit; display: block; }
+  a.lead-card:hover .name { color: var(--orange-soft); }
+  a.node { text-decoration: none; }
   .lead-card:hover { background: var(--card-hover); border-color: var(--line-strong); transform: translateY(-3px); }
   .lead-card .av { width: 56px; height: 56px; border-radius: 14px;
     background: linear-gradient(135deg, rgba(255,107,44,0.2), rgba(77,217,255,0.1));
