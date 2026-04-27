@@ -56,18 +56,33 @@ const css = `
     .prize-grid .row-b { grid-column: auto; grid-template-columns: 1fr; }
     .part-row { grid-template-columns: 1fr; }
   }
-  .judging { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-  .judging .jc { padding: 24px 26px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); position: relative; transition: all 0.25s ease; }
-  .judging .jc:hover { border-color: var(--line-strong); transform: translateY(-2px); }
-  .judging .jc .k { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; padding-right: 56px; }
-  .judging .jc .v { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; }
-  .judging .jc p { color: var(--ink-dim); margin-top: 8px; font-size: 13.5px; line-height: 1.55; }
-  .judging .jc .w { position: absolute; top: 22px; right: 22px;
-    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px;
-    color: var(--orange-soft); letter-spacing: -0.02em; }
-  @media (max-width: 1100px) { .judging { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 600px)  { .judging { grid-template-columns: 1fr; } }
+  .judging-table { margin-top: 40px; border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden; background: var(--card); }
+  .judging-table table { width: 100%; border-collapse: collapse; }
+  .judging-table thead th { font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint);
+    text-align: left; padding: 16px 24px; background: rgba(180,195,230,0.04);
+    border-bottom: 1px solid var(--line); font-weight: 500; }
+  .judging-table tbody tr { transition: background 0.2s ease; }
+  .judging-table tbody tr + tr td { border-top: 1px solid var(--line); }
+  .judging-table tbody tr:hover { background: rgba(255,107,44,0.03); }
+  .judging-table td { padding: 18px 24px; vertical-align: top; }
+  .judging-table .crit { font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+    font-size: 16px; color: var(--ink); white-space: nowrap; }
+  .judging-table .wt { font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-size: 20px; color: var(--orange-soft); letter-spacing: -0.02em; width: 110px; }
+  .judging-table .desc { color: var(--ink-dim); font-size: 14.5px; line-height: 1.55; }
+  @media (max-width: 800px) {
+    .judging-table thead { display: none; }
+    .judging-table table, .judging-table tbody, .judging-table tr, .judging-table td { display: block; }
+    .judging-table tr { padding: 18px 20px; }
+    .judging-table tr + tr { border-top: 1px solid var(--line); }
+    .judging-table tbody tr + tr td { border-top: 0; }
+    .judging-table td { padding: 0; }
+    .judging-table .crit { font-size: 17px; margin-bottom: 4px; white-space: normal; }
+    .judging-table .wt { font-size: 22px; margin: 6px 0 8px; width: auto; }
+    .judging-table .desc { margin-top: 4px; }
+  }
 
   .deliv { margin-top: 56px; padding: 36px 40px; border-radius: 16px;
     border: 1px solid var(--line);
@@ -232,43 +247,48 @@ export default function PrizesPage() {
             <span className="eyebrow"><span className="line"></span>What judges look for<span className="line"></span></span>
             <h2 className="mt-2">Judging criteria</h2>
             <p className="lead mt-3">Six weighted criteria. Total: 100%. Build something that would survive Monday morning in a real engineering org.</p>
-            <div className="judging">
-              <div className="jc">
-                <span className="w">30%</span>
-                <div className="k">01 · Inference Cost Reduction</div>
-                <div className="v">Tokens + compute, measured</div>
-                <p>Total inference cost relative to the LLM-only baseline. Show the math, show the methodology.</p>
-              </div>
-              <div className="jc">
-                <span className="w">20%</span>
-                <div className="k">02 · Reasoning Quality</div>
-                <div className="v">Accurate, complete, explainable</div>
-                <p>Answer accuracy, completeness, and how clearly your system explains how it got there.</p>
-              </div>
-              <div className="jc">
-                <span className="w">15%</span>
-                <div className="k">03 · Performance &amp; Efficiency</div>
-                <div className="v">Latency &amp; throughput</div>
-                <p>Improvements in P50 / P95 latency, throughput, and overall system efficiency vs. baseline.</p>
-              </div>
-              <div className="jc">
-                <span className="w">15%</span>
-                <div className="k">04 · Graph Utilization Depth</div>
-                <div className="v">Graph doing real work</div>
-                <p>Multi-hop reasoning, entity-relationship traversal, and filtering — not graph-as-lookup-table.</p>
-              </div>
-              <div className="jc">
-                <span className="w">10%</span>
-                <div className="k">05 · Architecture Design</div>
-                <div className="v">Clean AI Factory layers</div>
-                <p>Separation of Graph, Orchestration, LLM and Evaluation layers — clear seams between each.</p>
-              </div>
-              <div className="jc">
-                <span className="w">10%</span>
-                <div className="k">06 · Reusability / Production</div>
-                <div className="v">Would survive prod</div>
-                <p>Could this scale and run in real production? Reusable patterns, not a one-off demo.</p>
-              </div>
+            <div className="judging-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Criteria</th>
+                    <th>Weight</th>
+                    <th>What we&apos;re looking for</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="crit">Inference Cost Reduction</td>
+                    <td className="wt">30%</td>
+                    <td className="desc">Real, measurable token and compute reduction.</td>
+                  </tr>
+                  <tr>
+                    <td className="crit">Reasoning Quality</td>
+                    <td className="wt">20%</td>
+                    <td className="desc">Accuracy, completeness, and explainability.</td>
+                  </tr>
+                  <tr>
+                    <td className="crit">Performance &amp; Efficiency</td>
+                    <td className="wt">15%</td>
+                    <td className="desc">Latency, throughput, system efficiency.</td>
+                  </tr>
+                  <tr>
+                    <td className="crit">Graph Utilization Depth</td>
+                    <td className="wt">15%</td>
+                    <td className="desc">Effective use of multi-hop reasoning, not just lookups.</td>
+                  </tr>
+                  <tr>
+                    <td className="crit">Architecture Design</td>
+                    <td className="wt">10%</td>
+                    <td className="desc">Clean separation aligned with the AI Factory model.</td>
+                  </tr>
+                  <tr>
+                    <td className="crit">Reusability / Production Potential</td>
+                    <td className="wt">10%</td>
+                    <td className="desc">Could this scale to a real product?</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
             <div className="deliv">
