@@ -11,11 +11,28 @@ export const metadata = {
   description: 'GraphRAG Inference Hackathon by TigerGraph — an open benchmark for Graph + LLM systems. $700 pool · May 1–16, 2026 · online · global · beginner friendly.',
   openGraph: {
     type: 'website',
+    url: 'https://graphrag-hackathon.vercel.app',
+    siteName: 'GraphRAG Inference Hackathon',
     title: 'GraphRAG Inference Hackathon — by TigerGraph',
-    description: 'Prove Graph beats Tokens. Build a dual-pipeline GraphRAG system, benchmark it, publish the numbers.',
+    description: 'Prove Graph beats Tokens. Build a dual-pipeline GraphRAG system, benchmark it, publish the numbers. $700 pool · May 1–16, 2026.',
+    locale: 'en_US',
+    images: [
+      {
+        url: '/assets/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'GraphRAG Inference Hackathon by TigerGraph',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@TigerGraphDB',
+    creator: '@TigerGraphDB',
+    title: 'GraphRAG Inference Hackathon — by TigerGraph',
+    description: 'Prove Graph beats Tokens. Build a dual-pipeline GraphRAG system, benchmark it, publish the numbers. $700 pool · May 1–16, 2026.',
     images: ['/assets/og-image.jpg'],
   },
-  twitter: { card: 'summary_large_image' },
   icons: { icon: '/assets/favicon.svg' },
 };
 
