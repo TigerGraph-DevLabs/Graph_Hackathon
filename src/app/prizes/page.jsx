@@ -56,13 +56,48 @@ const css = `
     .prize-grid .row-b { grid-column: auto; grid-template-columns: 1fr; }
     .part-row { grid-template-columns: 1fr; }
   }
-  .judging { margin-top: 80px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
-  .judging .jc { padding: 24px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); }
+  .judging { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .judging .jc { padding: 24px 26px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); position: relative; transition: all 0.25s ease; }
+  .judging .jc:hover { border-color: var(--line-strong); transform: translateY(-2px); }
   .judging .jc .k { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
-  .judging .jc .v { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16px; }
-  .judging .jc p { color: var(--ink-dim); margin-top: 8px; font-size: 13px; line-height: 1.5; }
-  @media (max-width: 900px) { .judging { grid-template-columns: 1fr 1fr; } }
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; padding-right: 56px; }
+  .judging .jc .v { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; }
+  .judging .jc p { color: var(--ink-dim); margin-top: 8px; font-size: 13.5px; line-height: 1.55; }
+  .judging .jc .w { position: absolute; top: 22px; right: 22px;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px;
+    color: var(--orange-soft); letter-spacing: -0.02em; }
+  @media (max-width: 1100px) { .judging { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px)  { .judging { grid-template-columns: 1fr; } }
+
+  .deliv { margin-top: 56px; padding: 36px 40px; border-radius: 16px;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(180,195,230,0.03), transparent); }
+  .deliv .head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+  .deliv h3 { font-size: 22px; }
+  .deliv .head .sub { font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); }
+  .deliv ul { list-style: none; padding: 0; margin: 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+  .deliv li { display: flex; align-items: flex-start; gap: 12px;
+    color: var(--ink); font-size: 15px; line-height: 1.5; }
+  .deliv li svg { flex-shrink: 0; color: var(--orange); margin-top: 3px; }
+  .deliv li b { font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+  .deliv li span { color: var(--ink-dim); font-size: 13.5px; margin-left: 4px; }
+  @media (max-width: 700px) { .deliv { padding: 28px; } .deliv ul { grid-template-columns: 1fr; } }
+
+  .repo-callout { margin-top: 40px; padding: 26px 32px;
+    border-radius: 14px; border: 1px solid rgba(77,217,255,0.3);
+    background: linear-gradient(135deg, rgba(77,217,255,0.06), rgba(255,107,44,0.03));
+    display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+  .repo-callout .ico { width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(77,217,255,0.12); border: 1px solid rgba(77,217,255,0.35);
+    display: grid; place-items: center; color: var(--cyan-soft); flex-shrink: 0; }
+  .repo-callout .body { flex: 1; min-width: 260px; }
+  .repo-callout .lbl { font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--cyan-soft); }
+  .repo-callout h3 { font-size: 19px; margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace; font-weight: 500; letter-spacing: -0.01em; }
+  .repo-callout p { color: var(--ink-dim); margin-top: 6px; font-size: 14px; line-height: 1.55; }
 `;
 
 const TrophySvg = () => (
@@ -196,12 +231,87 @@ export default function PrizesPage() {
           <div style={{ marginTop: 100 }}>
             <span className="eyebrow"><span className="line"></span>What judges look for<span className="line"></span></span>
             <h2 className="mt-2">Judging criteria</h2>
-            <p className="lead mt-3">Build something that would survive Monday morning in a real engineering org.</p>
+            <p className="lead mt-3">Six weighted criteria. Total: 100%. Build something that would survive Monday morning in a real engineering org.</p>
             <div className="judging">
-              <div className="jc"><div className="k">01 · Architecture</div><div className="v">Clean AI Factory layers</div><p>Separation of Graph, Orchestration, LLM and Eval layers. Clear seams.</p></div>
-              <div className="jc"><div className="k">02 · Graph use</div><div className="v">Meaningful graph reasoning</div><p>Multi-hop retrieval, entities + relationships doing real work — not cosmetics.</p></div>
-              <div className="jc"><div className="k">03 · Benchmarks</div><div className="v">Honest, reproducible</div><p>Tokens, latency, cost, accuracy. Numbers you&apos;d put in a pull request.</p></div>
-              <div className="jc"><div className="k">04 · Dashboard</div><div className="v">Clarity of story</div><p>A side-by-side scoreboard a non-engineer would trust on first glance.</p></div>
+              <div className="jc">
+                <span className="w">30%</span>
+                <div className="k">01 · Inference Cost Reduction</div>
+                <div className="v">Tokens + compute, measured</div>
+                <p>Total inference cost relative to the LLM-only baseline. Show the math, show the methodology.</p>
+              </div>
+              <div className="jc">
+                <span className="w">20%</span>
+                <div className="k">02 · Reasoning Quality</div>
+                <div className="v">Accurate, complete, explainable</div>
+                <p>Answer accuracy, completeness, and how clearly your system explains how it got there.</p>
+              </div>
+              <div className="jc">
+                <span className="w">15%</span>
+                <div className="k">03 · Performance &amp; Efficiency</div>
+                <div className="v">Latency &amp; throughput</div>
+                <p>Improvements in P50 / P95 latency, throughput, and overall system efficiency vs. baseline.</p>
+              </div>
+              <div className="jc">
+                <span className="w">15%</span>
+                <div className="k">04 · Graph Utilization Depth</div>
+                <div className="v">Graph doing real work</div>
+                <p>Multi-hop reasoning, entity-relationship traversal, and filtering — not graph-as-lookup-table.</p>
+              </div>
+              <div className="jc">
+                <span className="w">10%</span>
+                <div className="k">05 · Architecture Design</div>
+                <div className="v">Clean AI Factory layers</div>
+                <p>Separation of Graph, Orchestration, LLM and Evaluation layers — clear seams between each.</p>
+              </div>
+              <div className="jc">
+                <span className="w">10%</span>
+                <div className="k">06 · Reusability / Production</div>
+                <div className="v">Would survive prod</div>
+                <p>Could this scale and run in real production? Reusable patterns, not a one-off demo.</p>
+              </div>
+            </div>
+
+            <div className="deliv">
+              <div className="head">
+                <h3>Required deliverables</h3>
+                <span className="sub">What every team submits</span>
+              </div>
+              <ul>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <div><b>Architecture diagram</b><span>— AI Factory layers, labeled</span></div>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <div><b>Cost comparison table</b><span>— LLM-only vs. Graph + LLM</span></div>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <div><b>Token usage analysis</b><span>— per-query breakdown</span></div>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <div><b>Performance evaluation</b><span>— latency, throughput, accuracy</span></div>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <div><b>Demo / walkthrough</b><span>— recorded video of both pipelines</span></div>
+                </li>
+              </ul>
+            </div>
+
+            <div className="repo-callout">
+              <div className="ico">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .3a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.06c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 6.8c1.02.01 2.05.14 3.01.4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.83.58A12 12 0 0 0 12 .3z"/>
+                </svg>
+              </div>
+              <div className="body">
+                <div className="lbl">Reference implementation</div>
+                <h3>github.com/tigergraph/graphrag</h3>
+                <p>TigerGraph&apos;s official GraphRAG reference. Use it as your starting point for graph construction, entity + community identification, and multi-hop reasoning patterns. Clone, extend, benchmark.</p>
+              </div>
+              <a href="https://github.com/tigergraph/graphrag" target="_blank" rel="noopener" className="btn btn-cyan">Open repo →</a>
             </div>
           </div>
 

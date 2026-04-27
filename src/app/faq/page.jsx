@@ -120,19 +120,19 @@ export default function FaqPage() {
                 <Q ix="Q.08" q="Which LLMs can I use?">Any LLM you want — OpenAI, Anthropic, open-source models via Hugging Face, local Ollama setups. Just be transparent about it in your submission and use the same model across both pipelines for a fair comparison.</Q>
                 <Q ix="Q.09" q="What dataset should I use?">Your choice. Pick a domain where relationships matter — enterprise docs, research papers, product catalogs, legal, healthcare, financial filings. Detailed submission guidelines with recommended datasets will be shared with registered teams.</Q>
                 <Q ix="Q.10" q="Are API credits provided?">Credit programs with LLM and cloud partners are being finalized. Registered teams will receive partner credits directly through the WhatsApp group and Unstop announcements.</Q>
-                <Q ix="Q.11" q="Can I use existing open-source GraphRAG frameworks?">Yes, but the judging criteria weight <i>your</i> architecture, graph schema, and benchmark methodology. Wrapping someone else&apos;s framework with no modifications won&apos;t score well. Show the thinking.</Q>
+                <Q ix="Q.11" q="Can I use existing open-source GraphRAG frameworks?">Yes — and we recommend starting from TigerGraph&apos;s official reference: <a href="https://github.com/tigergraph/graphrag" target="_blank" rel="noopener">github.com/tigergraph/graphrag</a>. It covers graph construction, entity + community identification, and multi-hop reasoning. The judging criteria weight <i>your</i> architecture, graph schema, and benchmark methodology — wrapping someone else&apos;s framework with no modifications won&apos;t score well. Show the thinking.</Q>
               </div>
 
               <div className="faq-group" id="submission">
                 <div className="gh"><span className="n">03</span><h2>Submission</h2></div>
                 <Q ix="Q.12" q="Where do I submit?">All deliverables go through Unstop before May 12, 2026 · 11:59 PM IST. Detailed submission guidelines (required files, demo video length, dashboard format) will be shared with all registered teams.</Q>
-                <Q ix="Q.13" q="What do I need to submit?">At minimum: source code (GitHub repo), a README with setup + architecture, a recorded demo of both pipelines and the dashboard, and a benchmark report with your metrics. Specifics will be in the participant guidelines.</Q>
+                <Q ix="Q.13" q="What do I need to submit?">Five required deliverables: an <b>architecture diagram</b> (AI Factory layers), a <b>cost comparison table</b> (LLM-only vs. Graph + LLM), a <b>token usage analysis</b>, a <b>performance evaluation</b> (latency, throughput, accuracy), and a <b>recorded demo / walkthrough</b> of both pipelines. Plus the source code (GitHub repo) with a README. See the <a href="/prizes">Prizes page</a> for the full deliverables list.</Q>
                 <Q ix="Q.14" q="Can I submit late?">No. The deadline is hard. Unstop closes submissions automatically at 11:59 PM IST on May 12.</Q>
               </div>
 
               <div className="faq-group" id="judging">
                 <div className="gh"><span className="n">04</span><h2>Judging &amp; Prizes</h2></div>
-                <Q ix="Q.15" q="How are teams judged?">Four criteria: architecture (clean AI Factory layers), meaningful graph use (multi-hop, entities + relationships doing real work), honest reproducible benchmarks, and dashboard clarity. See the <a href="/prizes">Prizes page</a>.</Q>
+                <Q ix="Q.15" q="How are teams judged?">Six weighted criteria, totalling 100%: <b>Inference Cost Reduction (30%)</b>, <b>Reasoning Quality (20%)</b>, <b>Performance &amp; Efficiency (15%)</b>, <b>Graph Utilization Depth (15%)</b>, <b>Architecture Design (10%)</b>, and <b>Reusability / Production Potential (10%)</b>. Full descriptions on the <a href="/prizes">Prizes page</a>.</Q>
                 <Q ix="Q.16" q="What happens after I'm in the Top 10?">Top 10 are announced May 12. You get 1:1 mentoring with TigerGraph experts on May 13–14 to sharpen your solution. On May 15 you present live to the judging panel. Winners announced May 16.</Q>
                 <Q ix="Q.17" q="How are the prizes paid out?">Cash prizes are in USD and will be transferred to the team&apos;s designated account after the winner announcement on May 16. Certificates are delivered digitally.</Q>
               </div>
