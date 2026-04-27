@@ -158,11 +158,11 @@ export default function PrizesPage() {
                     <path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
                   </svg>
                 </div>
-                <div className="rank">Best Content Creator · Build-in-Public</div>
+                <div className="rank">Best Content Creator · Video Submission</div>
                 <div className="amt">$100</div>
                 <div className="cur">≈ ₹9,399 INR</div>
-                <h3>Best Hackathon Storytelling</h3>
-                <p>For the participant or team who documents the journey best — threads, blog posts, demo videos, dev-logs. Substance and craft both count. Tag <b style={{ color: 'var(--ink)' }}>#GraphRAGHackathon</b> and <b style={{ color: 'var(--ink)' }}>@TigerGraphDB</b> so we can find it.</p>
+                <h3>Best Hackathon Video</h3>
+                <p>For the participant or team with the best video submission — demo walkthroughs, build-in-public clips, or project showcases. Substance and craft both count. Tag <b style={{ color: 'var(--ink)' }}>#GraphRAGHackathon</b> and <b style={{ color: 'var(--ink)' }}>@TigerGraphDB</b> so we can find it.</p>
                 <div className="perks">
                   <span className="badge orange">Cash prize</span>
                   <span className="badge orange">Creator certificate</span>

@@ -398,7 +398,7 @@ export default function HomePage() {
             <div className="pc">
               <div className="rank">Content Creator</div>
               <div className="amt mt-2">$100</div>
-              <div className="title">Best Build-in-Public Story</div>
+              <div className="title">Best Hackathon Video</div>
             </div>
           </div>
         </div>
