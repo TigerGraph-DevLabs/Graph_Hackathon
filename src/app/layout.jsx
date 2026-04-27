@@ -16,7 +16,7 @@ export const metadata = {
     images: ['/assets/og-image.jpg'],
   },
   twitter: { card: 'summary_large_image' },
-  icons: { icon: '/assets/tigergraph-logo.png' },
+  icons: { icon: '/assets/favicon.svg' },
 };
 
 export const viewport = {
