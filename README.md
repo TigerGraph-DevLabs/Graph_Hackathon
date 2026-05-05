@@ -1,6 +1,6 @@
 # GraphRAG Inference Hackathon — Site (Next.js)
 
-Static marketing site for the **GraphRAG Inference Hackathon** by TigerGraph (May 1 – May 16, 2026). Built with Next.js 15 (App Router), pure frontend, **statically exported** for Vercel.
+Static marketing site for the **GraphRAG Inference Hackathon** by TigerGraph (May 4 – May 26, 2026). Built with Next.js 15 (App Router), pure frontend, **statically exported** for Vercel.
 
 ## Tech stack
 
@@ -46,8 +46,8 @@ export const SITE = {
   whatsappUrl:  'https://chat.whatsapp.com/Iwdyhie2gSoIR0k2teMtKb',
   contactEmail: 'devanshu.saxena@tigergraph.com',
   contactPhone: '+917404313376',
-  registrationDeadline: Date.UTC(2026, 4, 5, 18, 29, 0), // May 5 23:59 IST
-  hackathonDates: 'May 1 – May 16, 2026',
+  registrationDeadline: Date.UTC(2026, 4, 10, 18, 29, 0), // May 10 23:59 IST
+  hackathonDates: 'May 4 – May 26, 2026',
   prizePool: { usd: 700, inr: 65795 },
 };
 ```
@@ -73,7 +73,7 @@ web-next/
 └── src/
     ├── app/
     │   ├── layout.jsx              <html>, fonts, theme bootstrap, Nav, Footer
-    │   ├── page.jsx                home (hero, dual-pipeline, AI Factory, countdown, prize/timeline previews)
+    │   ├── page.jsx                home (hero, tri-pipeline, AI Factory, countdown, prize/timeline previews)
     │   ├── globals.css             ported styles.css
     │   ├── home.css                index-only animations
     │   ├── timeline/page.jsx

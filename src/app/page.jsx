@@ -6,8 +6,8 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Event',
   name: 'GraphRAG Inference Hackathon',
-  startDate: '2026-05-01T12:00:00+05:30',
-  endDate:   '2026-05-16T12:00:00+05:30',
+  startDate: '2026-05-04T12:00:00+05:30',
+  endDate:   '2026-05-26T23:59:00+05:30',
   eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
   eventStatus: 'https://schema.org/EventScheduled',
   location: { '@type': 'VirtualLocation', url: SITE.unstopUrl },
@@ -15,10 +15,10 @@ const jsonLd = {
   offers: {
     '@type': 'Offer', price: '0', priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
-    validThrough: '2026-05-05T23:59:00+05:30',
+    validThrough: '2026-05-10T23:59:00+05:30',
     url: SITE.unstopUrl,
   },
-  description: 'An open benchmark proving graphs make LLM inference faster, cheaper, and smarter. Build a dual-pipeline GraphRAG system, benchmark it, publish the numbers.',
+  description: 'An open benchmark proving graphs make LLM inference faster, cheaper, and smarter. Build three pipelines side-by-side — LLM-Only, Basic RAG, GraphRAG — and let the numbers tell the story.',
 };
 
 export default function HomePage() {
@@ -102,14 +102,14 @@ export default function HomePage() {
               GraphRAG <span className="grad-orange">Inference</span><br/>Hackathon
             </h1>
             <p className="sub">
-              A beginner-friendly online coding challenge to prove that graphs make LLM inference faster, cheaper, and smarter. Build a dual-pipeline system. Benchmark it. Publish the numbers.
+              A beginner-friendly online coding challenge to prove that graphs make LLM inference faster, cheaper, and smarter. Build three pipelines side-by-side — LLM-Only, Basic RAG, GraphRAG — and let the numbers tell the story.
             </p>
             <div className="actions">
               <RegisterButton>Register on Unstop <span>→</span></RegisterButton>
               <a href="/timeline" className="btn btn-ghost">View Timeline</a>
             </div>
             <div className="meta-row">
-              <div className="m"><span className="k">Dates</span><span className="v">May 1 — May 16, 2026</span></div>
+              <div className="m"><span className="k">Dates</span><span className="v">May 4 — May 26, 2026</span></div>
               <div className="m"><span className="k">Prize Pool</span><span className="v">$700 · ₹65,795</span></div>
               <div className="m"><span className="k">Team</span><span className="v">1 – 5 Members</span></div>
               <div className="m"><span className="k">Where</span><span className="v">Online · Global</span></div>
@@ -128,8 +128,8 @@ export default function HomePage() {
               </div>
               <div className="pipes">
                 <div className="pipe-card baseline">
-                  <div className="pk">Pipeline 01 · Baseline</div>
-                  <div className="pn">Just LLM</div>
+                  <div className="pk">Pipeline 01 · LLM-Only</div>
+                  <div className="pn">Just the model</div>
                   <div className="metrics">
                     <div className="metric"><span className="mk">Tokens</span><span className="mv">12,840</span></div>
                     <div className="bar"><span style={{ width: '92%' }}></span></div>
@@ -139,8 +139,20 @@ export default function HomePage() {
                     <div className="bar"><span style={{ width: '88%' }}></span></div>
                   </div>
                 </div>
+                <div className="pipe-card rag">
+                  <div className="pk">Pipeline 02 · Basic RAG</div>
+                  <div className="pn">Vectors + LLM</div>
+                  <div className="metrics">
+                    <div className="metric"><span className="mk">Tokens</span><span className="mv">5,920</span></div>
+                    <div className="bar"><span style={{ width: '48%' }}></span></div>
+                    <div className="metric"><span className="mk">Latency</span><span className="mv">3.6s</span></div>
+                    <div className="bar"><span style={{ width: '42%' }}></span></div>
+                    <div className="metric"><span className="mk">Cost</span><span className="mv">$0.058</span></div>
+                    <div className="bar"><span style={{ width: '46%' }}></span></div>
+                  </div>
+                </div>
                 <div className="pipe-card graph">
-                  <div className="pk">Pipeline 02 · GraphRAG</div>
+                  <div className="pk">Pipeline 03 · GraphRAG</div>
                   <div className="pn">Graph + LLM</div>
                   <div className="metrics">
                     <div className="metric"><span className="mk">Tokens</span><span className="mv">2,140</span></div>
@@ -154,28 +166,28 @@ export default function HomePage() {
               </div>
             </div>
             <div className="console-footer">
-              <span>Δ tokens <b>−83%</b> · Δ cost <b>−85%</b> · Δ latency <b>−77%</b></span>
+              <span>GraphRAG vs Basic RAG · Δ tokens <b>−64%</b> · Δ cost <b>−67%</b> · Δ latency <b>−47%</b></span>
               <span>v1.0 · EXAMPLE</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* DUAL PIPELINE */}
+      {/* TRI PIPELINE */}
       <section className="hair">
         <div className="container">
           <div>
             <span className="eyebrow"><span className="line"></span>What you&apos;ll build<span className="line"></span></span>
-            <h2 className="mt-2">Two pipelines.<br/><span className="grad-cyan">One question.</span> A scoreboard that settles it.</h2>
-            <p className="lead mt-3">Your mission is a working product with two parallel pipelines answering the same prompt — plus a dashboard that compares them head-to-head on tokens, latency, cost, and accuracy.</p>
+            <h2 className="mt-2">Three pipelines.<br/><span className="grad-cyan">One question.</span> A scoreboard that settles it.</h2>
+            <p className="lead mt-3">Your mission is an interactive comparison dashboard: enter one query, run it through all three pipelines at once — LLM-Only, Basic RAG, and GraphRAG — and display side-by-side answers with tokens, latency, cost, and accuracy.</p>
           </div>
 
           <div className="dual mt-6">
             <div className="dual-card">
               <span className="badge">Pipeline 01</span>
-              <h3 style={{ marginTop: 14 }}>The Baseline</h3>
-              <div className="who">Just the LLM</div>
-              <p>Send a prompt. The LLM answers. Simple and direct — but every nuance costs tokens, and at scale that cost adds up. This is your control group.</p>
+              <h3 style={{ marginTop: 14 }}>LLM-Only</h3>
+              <div className="who">Just the model</div>
+              <p>A prompt goes in, an output comes out. No retrieval — just the model reasoning from scratch. Your worst-case baseline, and the upper bound on cost.</p>
               <div className="flow">
                 <div className="step"><span className="n">1</span><span className="t">User prompt</span><span className="d">input</span></div>
                 <div className="step"><span className="n">2</span><span className="t">LLM reasons over full context</span><span className="d">expensive</span></div>
@@ -183,18 +195,29 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="vs" aria-hidden="true"><div className="line"></div><span>VS</span><div className="line"></div></div>
+            <div className="dual-card rag">
+              <span className="badge cyan">Pipeline 02</span>
+              <h3 style={{ marginTop: 14 }}>Basic RAG</h3>
+              <div className="who">Vectors + LLM</div>
+              <p>The industry standard today. Vector embeddings find similar chunks and stuff them into the prompt. Helpful, but it can&apos;t reason across relationships between entities.</p>
+              <div className="flow">
+                <div className="step"><span className="n">1</span><span className="t">User prompt</span><span className="d">input</span></div>
+                <div className="step"><span className="n">2</span><span className="t">Vector search retrieves similar chunks</span><span className="d">retrieve</span></div>
+                <div className="step"><span className="n">3</span><span className="t">Chunks stuffed into context window</span><span className="d">stuff</span></div>
+                <div className="step"><span className="n">4</span><span className="t">LLM answers from retrieved text</span><span className="d">answer</span></div>
+              </div>
+            </div>
 
             <div className="dual-card graph">
-              <span className="badge orange">Pipeline 02</span>
+              <span className="badge orange">Pipeline 03</span>
               <h3 style={{ marginTop: 14 }}>GraphRAG</h3>
               <div className="who">Graph + LLM</div>
-              <p>Your prompt runs through TigerGraph first — pulling the relevant subgraph and mapping multi-hop connections. The LLM generates its answer from filtered, structured context.</p>
+              <p>Built on the <a href="https://github.com/tigergraph/graphrag" target="_blank" rel="noopener" style={{ color: 'var(--orange-soft)', textDecoration: 'underline', textDecorationColor: 'rgba(255,107,44,0.4)' }}>TigerGraph GraphRAG repo</a>. TigerGraph handles entity extraction, relationships, and multi-hop reasoning. The LLM synthesizes from a clean, focused subgraph.</p>
               <div className="flow">
                 <div className="step"><span className="n">1</span><span className="t">User prompt</span><span className="d">input</span></div>
                 <div className="step"><span className="n">2</span><span className="t">TigerGraph extracts relevant subgraph</span><span className="d">graph</span></div>
                 <div className="step"><span className="n">3</span><span className="t">Multi-hop reasoning over entities</span><span className="d">graph</span></div>
-                <div className="step"><span className="n">4</span><span className="t">LLM composes answer from structured ctx</span><span className="d">cheap</span></div>
+                <div className="step"><span className="n">4</span><span className="t">LLM composes from structured context</span><span className="d">cheap</span></div>
                 <div className="step"><span className="n">5</span><span className="t">Final answer</span><span className="d">output</span></div>
               </div>
             </div>
@@ -233,7 +256,7 @@ export default function HomePage() {
           <div>
             <span className="eyebrow"><span className="line"></span>Architecture<span className="line"></span></span>
             <h2 className="mt-2">Follow the <span className="grad-orange">AI Factory</span> model.</h2>
-            <p className="lead mt-3">Four separate layers — scalable, reusable, and ready for real production. This is what the judges are looking for.</p>
+            <p className="lead mt-3">Four separate layers — scalable, reusable, and ready for real production. A clean reference architecture for the Engineering &amp; Storytelling axis (20% of judging).</p>
           </div>
 
           <div className="factory">
@@ -298,8 +321,8 @@ export default function HomePage() {
             </div>
             <div className="stat">
               <div className="k">Duration</div>
-              <div className="v">16 Days</div>
-              <div className="sub">May 1 — May 16, 2026</div>
+              <div className="v">23 Days</div>
+              <div className="sub">May 4 — May 26, 2026</div>
             </div>
             <div className="stat">
               <div className="k">Level</div>
@@ -316,7 +339,7 @@ export default function HomePage() {
           <span className="eyebrow"><span className="line"></span>Registration closes<span className="line"></span></span>
           <h2 className="mt-2">Every hour matters.</h2>
           <p className="lead mt-3" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-            Registrations close <b style={{ color: 'var(--ink)' }}>May 5, 2026 · 11:59 PM IST</b>. Don&apos;t be the team still reading docs on day one.
+            Registrations close <b style={{ color: 'var(--ink)' }}>May 10, 2026 · 11:59 PM IST</b>. Don&apos;t be the team still reading docs on day one.
           </p>
           <div className="mt-4" style={{ display: 'flex', justifyContent: 'center' }}>
             <Countdown />
@@ -396,9 +419,9 @@ export default function HomePage() {
               <div className="title">Community Leads&apos; Choice</div>
             </div>
             <div className="pc">
-              <div className="rank">Content Creator</div>
+              <div className="rank">Content Bounty</div>
               <div className="amt mt-2">$100</div>
-              <div className="title">Best Hackathon Video</div>
+              <div className="title">Blog · Video · Social</div>
             </div>
           </div>
         </div>
@@ -419,25 +442,25 @@ export default function HomePage() {
             <div className="tl-node active">
               <div className="dot"></div>
               <div className="phase">Phase 01</div>
-              <div className="date">Apr 24 — May 5</div>
+              <div className="date">Apr 24 — May 10</div>
               <div className="desc">Registrations open. Join the WhatsApp group, find teammates.</div>
             </div>
             <div className="tl-node">
               <div className="dot"></div>
-              <div className="phase">Phase 02</div>
-              <div className="date">May 1 — May 12</div>
-              <div className="desc">Build your dual-pipeline system. Submit on Unstop before 11:59 PM IST.</div>
+              <div className="phase">Phase 02 · Round 1</div>
+              <div className="date">May 4 — May 16</div>
+              <div className="desc">Build all three pipelines on ≥ 2M tokens. Ship the comparison dashboard. Submit on Unstop.</div>
             </div>
             <div className="tl-node">
               <div className="dot"></div>
-              <div className="phase">Phase 03</div>
-              <div className="date">May 13 — May 14</div>
-              <div className="desc">Top 10 teams get 1:1 mentoring with TigerGraph experts.</div>
+              <div className="phase">Phase 03 · Round 2</div>
+              <div className="date">May 18 — May 24</div>
+              <div className="desc">Top 10 scale to 50–100M tokens with $50 Gemini credits per team + 1:1 TigerGraph mentoring.</div>
             </div>
             <div className="tl-node">
               <div className="dot"></div>
               <div className="phase">Phase 04</div>
-              <div className="date">May 15 — May 16</div>
+              <div className="date">May 25 — May 26</div>
               <div className="desc">Live demos, Q&amp;A, and winners announced.</div>
             </div>
           </div>

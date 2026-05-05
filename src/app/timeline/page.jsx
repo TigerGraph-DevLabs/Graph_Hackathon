@@ -2,7 +2,7 @@ import RegisterButton from '@/components/RegisterButton';
 
 export const metadata = {
   title: 'Timeline',
-  description: 'Timeline for the GraphRAG Inference Hackathon — registrations open Apr 24, build May 1–12, top-10 mentoring May 13–14, demos and winners May 15–16, 2026.',
+  description: 'Timeline for the GraphRAG Inference Hackathon — registrations open Apr 24, build May 4–16, Round 2 mentoring May 18–24, live demos May 25, winners announced May 26, 2026.',
 };
 
 const css = `
@@ -51,7 +51,7 @@ export default function TimelinePage() {
       <style>{css}</style>
       <section className="page-hero">
         <div className="container">
-          <span className="eyebrow"><span className="line"></span>Timeline · 4 phases over 3 weeks<span className="line"></span></span>
+          <span className="eyebrow"><span className="line"></span>Timeline · 4 phases · two rounds<span className="line"></span></span>
           <h1 className="display">From registration<br/>to the <span className="grad-orange">winner&apos;s mic.</span></h1>
           <p className="lead mt-3">All timings in IST (UTC+5:30). Mark your calendar — each gate is non-negotiable.</p>
         </div>
@@ -71,11 +71,11 @@ export default function TimelinePage() {
               <div className="node">01</div>
               <div className="tl-card">
                 <div className="phase">Phase 01 · Open</div>
-                <div className="dates">Apr 24, 2026 — May 5, 2026 · 11:59 PM IST</div>
+                <div className="dates">Apr 24, 2026 — May 10, 2026 · 11:59 PM IST</div>
                 <h3>Registrations &amp; Team Formation</h3>
                 <p>Register your team on Unstop. Teams of 1–5, cross-institutional welcome. Join the WhatsApp group for announcements, find teammates, ask questions, and meet community leads.</p>
                 <div className="meta">
-                  <span className="badge orange">Registration deadline · May 5</span>
+                  <span className="badge orange">Registration deadline · May 10</span>
                   <span className="badge">Solo participation allowed</span>
                   <span className="badge">Free to enter</span>
                 </div>
@@ -85,14 +85,14 @@ export default function TimelinePage() {
             <div className="tl-item cyan">
               <div className="node">02</div>
               <div className="tl-card">
-                <div className="phase">Phase 02 · Build</div>
-                <div className="dates">May 1, 2026 · 12:00 PM IST — May 12, 2026 · 11:59 PM IST</div>
-                <h3>Building &amp; Submission</h3>
-                <p>Build your dual-pipeline GraphRAG system — Baseline LLM vs Graph + LLM — plus the comparison dashboard. Submit all deliverables through Unstop before the deadline. Detailed submission guidelines will be shared separately with registered teams.</p>
+                <div className="phase">Phase 02 · Round 1 · Open Hackathon</div>
+                <div className="dates">May 4, 2026 · 12:00 PM IST — May 16, 2026 · 11:59 PM IST</div>
+                <h3>Build the 3-Pipeline Benchmark</h3>
+                <p>Build all three pipelines side-by-side — <b style={{ color: 'var(--ink)' }}>LLM-Only</b>, <b style={{ color: 'var(--ink)' }}>Basic RAG</b>, and <b style={{ color: 'var(--ink)' }}>GraphRAG</b> (on the TigerGraph GraphRAG repo) — plus the comparison dashboard. Minimum dataset: 2 million tokens of text. Use any LLM (Gemini free tier, Ollama local, etc.). Submit on Unstop before the deadline.</p>
                 <div className="meta">
-                  <span className="badge cyan">Dual pipeline required</span>
-                  <span className="badge cyan">Dashboard with metrics</span>
-                  <span className="badge">AI Factory architecture</span>
+                  <span className="badge cyan">3 pipelines required</span>
+                  <span className="badge cyan">≥ 2M tokens dataset</span>
+                  <span className="badge">LLM-as-Judge + BERTScore</span>
                 </div>
               </div>
             </div>
@@ -100,14 +100,14 @@ export default function TimelinePage() {
             <div className="tl-item">
               <div className="node">03</div>
               <div className="tl-card">
-                <div className="phase">Phase 03 · Shortlist &amp; Mentor</div>
-                <div className="dates">May 13, 2026 — May 14, 2026</div>
-                <h3>Top 10 Announced · 1:1 Mentoring</h3>
-                <p>Top 10 teams are announced on May 12 and move forward to the final round. They receive 1:1 mentoring sessions with TigerGraph experts on May 13 and May 14 to refine their solutions before the final demos.</p>
+                <div className="phase">Phase 03 · Round 2 · Production Showcase</div>
+                <div className="dates">May 18, 2026 — May 24, 2026</div>
+                <h3>Top 10 Announced · Scale to 50–100M Tokens</h3>
+                <p>Top 10 teams are announced on <b style={{ color: 'var(--ink)' }}>May 18</b> and scale their winning approach to <b style={{ color: 'var(--ink)' }}>50–100 million tokens</b>. TigerGraph provides <b style={{ color: 'var(--ink)' }}>$50 worth of Gemini API credits per team</b>, shared via secure endpoints — no out-of-pocket cost. 1:1 mentoring with TigerGraph engineers runs through May 24 to sharpen the solution before final demos.</p>
                 <div className="meta">
-                  <span className="badge">Top 10 shortlist</span>
+                  <span className="badge">Top 10 announced · May 18</span>
+                  <span className="badge">$50 Gemini credits / team</span>
                   <span className="badge">1:1 expert mentoring</span>
-                  <span className="badge">Refinement round</span>
                 </div>
               </div>
             </div>
@@ -116,20 +116,20 @@ export default function TimelinePage() {
               <div className="node">04</div>
               <div className="tl-card">
                 <div className="phase">Phase 04 · Final Judging</div>
-                <div className="dates">May 15, 2026 — May 16, 2026 · 12:00 PM IST</div>
+                <div className="dates">May 25, 2026 — May 26, 2026 · 11:59 PM IST</div>
                 <h3>Live Demos &amp; Winner Announcement</h3>
-                <p>On May 15, teams present live to the judging panel — demo the dual-pipeline system, showcase the benchmark dashboard, defend results in Q&amp;A. Winners announced May 16.</p>
+                <p>On <b style={{ color: 'var(--ink)' }}>May 25</b>, teams present live to the judging panel — demo the 3-pipeline comparison dashboard, walk through the benchmark report, defend results in Q&amp;A. Winners announced <b style={{ color: 'var(--ink)' }}>May 26, 2026</b>. Final benchmarks may be featured in the official TigerGraph blog and case studies.</p>
                 <div className="meta">
-                  <span className="badge orange">Live demo · May 15</span>
-                  <span className="badge orange">Winners · May 16</span>
-                  <span className="badge">Judge Q&amp;A</span>
+                  <span className="badge orange">Live demo · May 25</span>
+                  <span className="badge orange">Winners · May 26</span>
+                  <span className="badge">TigerGraph blog feature</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div style={{ marginTop: 64, textAlign: 'center' }}>
-            <RegisterButton>Register before May 5 →</RegisterButton>
+            <RegisterButton>Register before May 10 →</RegisterButton>
           </div>
         </div>
       </section>

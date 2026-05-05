@@ -8,13 +8,13 @@ const themeBootstrap = `(function(){try{var t=localStorage.getItem('grh-theme');
 export const metadata = {
   metadataBase: new URL('https://graphrag-hackathon.vercel.app'),
   title: { default: 'GraphRAG Inference Hackathon — by TigerGraph', template: '%s — GraphRAG Inference Hackathon' },
-  description: 'GraphRAG Inference Hackathon by TigerGraph — an open benchmark for Graph + LLM systems. $700 pool · May 1–16, 2026 · online · global · beginner friendly.',
+  description: 'GraphRAG Inference Hackathon by TigerGraph — an open benchmark for Graph + LLM systems. $700 pool · May 4–26, 2026 · online · global · beginner friendly.',
   openGraph: {
     type: 'website',
     url: 'https://graphrag-hackathon.vercel.app',
     siteName: 'GraphRAG Inference Hackathon',
     title: 'GraphRAG Inference Hackathon — by TigerGraph',
-    description: 'Prove Graph beats Tokens. Build a dual-pipeline GraphRAG system, benchmark it, publish the numbers. $700 pool · May 1–16, 2026.',
+    description: 'Prove Graph beats Tokens. Build three pipelines side-by-side — LLM-Only, Basic RAG, GraphRAG — benchmark them, publish the numbers. $700 pool · May 4–26, 2026.',
     locale: 'en_US',
     images: [
       {
@@ -30,7 +30,7 @@ export const metadata = {
     site: '@TigerGraphDB',
     creator: '@TigerGraphDB',
     title: 'GraphRAG Inference Hackathon — by TigerGraph',
-    description: 'Prove Graph beats Tokens. Build a dual-pipeline GraphRAG system, benchmark it, publish the numbers. $700 pool · May 1–16, 2026.',
+    description: 'Prove Graph beats Tokens. Build three pipelines side-by-side — LLM-Only, Basic RAG, GraphRAG — benchmark them, publish the numbers. $700 pool · May 4–26, 2026.',
     images: ['/assets/og-image.jpg'],
   },
   icons: { icon: '/assets/favicon.svg' },

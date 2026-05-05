@@ -38,10 +38,13 @@ const css = `
     font-size: 30px; letter-spacing: -0.02em; margin-top: 6px; }
   .metric-row .sub { color: var(--ink-dim); font-size: 13px; margin-top: 4px; }
   @media (max-width: 900px) { .metric-row { grid-template-columns: 1fr 1fr; } .metric-row .m:nth-child(2) { border-right: 0; } }
-  .compare { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  .compare { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
     border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
   .compare .c-col { padding: 28px; position: relative; }
   .compare .c-col.baseline { background: rgba(180,195,230,0.02); border-right: 1px solid var(--line); }
+  .compare .c-col.rag { background: rgba(77,217,255,0.04); border-right: 1px solid var(--line); }
+  .compare .c-col.rag .t { color: var(--cyan-soft); }
+  .compare .c-col.rag ul li .chk { color: var(--cyan); }
   .compare .c-col.graph { background: linear-gradient(180deg, rgba(255,107,44,0.06), rgba(77,217,255,0.02)); }
   .compare .head { font-family: 'JetBrains Mono', monospace; font-size: 11px;
     letter-spacing: 0.16em; color: var(--ink-faint); text-transform: uppercase; margin-bottom: 8px; }
@@ -55,9 +58,10 @@ const css = `
   .compare ul li:last-child { border-bottom: 0; }
   .compare ul li .chk { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; color: var(--ink-faint); }
   .compare .c-col.graph ul li .chk { color: var(--orange); }
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
     .compare { grid-template-columns: 1fr; }
-    .compare .c-col.baseline { border-right: 0; border-bottom: 1px solid var(--line); }
+    .compare .c-col.baseline,
+    .compare .c-col.rag { border-right: 0; border-bottom: 1px solid var(--line); }
   }
   .quote-block { padding: 40px; border-radius: 16px;
     background: linear-gradient(135deg, rgba(255,107,44,0.06), rgba(77,217,255,0.03));
@@ -189,18 +193,28 @@ export default function AboutPage() {
 
           <div className="compare">
             <div className="c-col baseline">
-              <div className="head">Baseline · Just LLM</div>
-              <div className="t">What you get today</div>
+              <div className="head">Pipeline 01 · LLM-Only</div>
+              <div className="t">Worst-case baseline</div>
               <ul>
-                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>Context window stuffed with everything relevant-ish</li>
-                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>Model reasons from scratch every time</li>
-                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>High token count, high latency, high cost</li>
-                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>Struggles with multi-entity relationship queries</li>
+                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>No retrieval — model reasons from scratch</li>
+                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>Context stuffed with everything relevant-ish</li>
+                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>Highest tokens, latency, and cost</li>
+                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>Cannot reason across entity relationships</li>
+              </ul>
+            </div>
+            <div className="c-col rag">
+              <div className="head">Pipeline 02 · Basic RAG</div>
+              <div className="t">Industry standard today</div>
+              <ul>
+                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>Vector search retrieves <i>similar</i> chunks</li>
+                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>Smaller context than LLM-Only — but still bloated</li>
+                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>No native multi-hop reasoning</li>
+                <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>The benchmark to beat — your baseline for token reduction</li>
               </ul>
             </div>
             <div className="c-col graph">
-              <div className="head">GraphRAG · Graph + LLM</div>
-              <div className="t">What you can build this hackathon</div>
+              <div className="head">Pipeline 03 · GraphRAG</div>
+              <div className="t">What you build this hackathon</div>
               <ul>
                 <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Only the relevant subgraph enters context</li>
                 <li><svg className="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Multi-hop structure handed to the model on a plate</li>

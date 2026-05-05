@@ -243,7 +243,8 @@
 }
 .console-q .prompt { color: var(--cyan); margin-right: 8px; }
 
-.pipes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pipes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width: 1100px) { .pipes { grid-template-columns: 1fr; } }
 .pipe-card {
   padding: 14px;
   border-radius: 10px;
@@ -252,6 +253,10 @@
   position: relative;
 }
 .pipe-card.baseline { }
+.pipe-card.rag {
+  background: linear-gradient(180deg, rgba(77, 217, 255, 0.05), rgba(180, 195, 230, 0.02));
+  border-color: rgba(77, 217, 255, 0.22);
+}
 .pipe-card.graph {
   background: linear-gradient(180deg, rgba(255, 107, 44, 0.06), rgba(77, 217, 255, 0.04));
   border-color: rgba(255, 107, 44, 0.22);
@@ -288,6 +293,7 @@
   font-weight: 600;
 }
 .pipe-card.baseline .mv { color: var(--ink); }
+.pipe-card.rag .mv { color: var(--cyan-soft); }
 .pipe-card.graph .mv { color: var(--orange-soft); }
 .pipe-card .bar {
   height: 4px;
@@ -302,6 +308,7 @@
   border-radius: 4px;
 }
 .pipe-card.baseline .bar > span { background: rgba(180, 195, 230, 0.35); }
+.pipe-card.rag .bar > span { background: linear-gradient(90deg, var(--cyan), var(--cyan-soft)); }
 
 .console-footer {
   padding: 12px 22px;
@@ -328,11 +335,11 @@
 .pill .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); }
 .pill.orange .dot { background: var(--orange); }
 
-/* ========= Dual pipeline section ========= */
+/* ========= Tri-pipeline section ========= */
 .dual {
   display: grid;
-  grid-template-columns: 1fr 40px 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
   align-items: stretch;
 }
 .dual-card {
@@ -342,6 +349,10 @@
   border: 1px solid var(--line);
   position: relative;
   transition: all 0.3s ease;
+}
+.dual-card.rag {
+  background: linear-gradient(180deg, rgba(77, 217, 255, 0.06), rgba(180, 195, 230, 0.02));
+  border-color: rgba(77, 217, 255, 0.22);
 }
 .dual-card.graph {
   background: linear-gradient(180deg, rgba(255, 107, 44, 0.07), rgba(77, 217, 255, 0.04));
@@ -357,6 +368,7 @@
   color: var(--ink-faint);
   margin-bottom: 18px;
 }
+.dual-card.rag .who { color: var(--cyan-soft); }
 .dual-card.graph .who { color: var(--orange-soft); }
 .dual-card p { color: var(--ink-dim); font-size: 15px; margin-bottom: 18px; }
 .dual-card .flow {
@@ -381,6 +393,7 @@
   color: var(--ink);
   flex-shrink: 0;
 }
+.dual-card.rag .step .n { background: rgba(77, 217, 255, 0.18); color: var(--cyan-soft); }
 .dual-card.graph .step .n { background: rgba(255, 107, 44, 0.2); color: var(--orange-soft); }
 .dual-card .step .t {
   font-family: 'Space Grotesk', sans-serif;
@@ -407,7 +420,7 @@
 }
 .vs .line { width: 1px; flex: 1; background: var(--line-strong); }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .dual { grid-template-columns: 1fr; }
   .vs { flex-direction: row; }
   .vs .line { height: 1px; width: 100%; }

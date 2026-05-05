@@ -1,8 +1,9 @@
 import RegisterButton from '@/components/RegisterButton';
+import { SITE } from '@/lib/site.config';
 
 export const metadata = {
   title: 'Prizes',
-  description: '$700 prize pool for the GraphRAG Inference Hackathon — $250 winner, $150 runner-up, $100 third, $100 community award, $100 best content creator. Plus TigerGraph recognition and certificates.',
+  description: '$700 prize pool for the GraphRAG Inference Hackathon — $250 winner, $150 runner-up, $100 third, $100 community award, $100 content creation bounty. Plus TigerGraph recognition and certificates.',
 };
 
 const css = `
@@ -134,7 +135,7 @@ export default function PrizesPage() {
       <style>{css}</style>
       <section className="page-hero">
         <div className="container">
-          <span className="eyebrow"><span className="line"></span>Rewards · $700 cash pool · 5 tracks<span className="line"></span></span>
+          <span className="eyebrow"><span className="line"></span>Rewards · $700 cash pool · 5 tracks + content bounty<span className="line"></span></span>
           <h1 className="display">Build it well.<br/><span className="grad-orange">Walk away with cash.</span></h1>
           <p className="lead mt-3">Win from a $700 prize pool across five tracks, plus TigerGraph recognition and certificates for all participants.</p>
         </div>
@@ -149,7 +150,7 @@ export default function PrizesPage() {
               <div className="amt grad">$250</div>
               <div className="cur">≈ ₹23,499 INR</div>
               <h3>Best GraphRAG Inference System</h3>
-              <p>Awarded to the team that builds the most compelling, production-ready dual-pipeline system with the sharpest benchmark dashboard — and tells the clearest story with their numbers.</p>
+              <p>Awarded to the team that builds the most compelling, production-ready three-pipeline benchmark — biggest verified token reduction, accuracy held or improved, and the clearest story told with their numbers.</p>
               <div className="perks">
                 <span className="badge orange">Cash prize</span>
                 <span className="badge orange">Winner certificate</span>
@@ -165,7 +166,7 @@ export default function PrizesPage() {
                 <div className="amt">$150</div>
                 <div className="cur">≈ ₹14,099 INR</div>
                 <h3>Outstanding Implementation</h3>
-                <p>Strong execution across all four AI Factory layers with clear, credible benchmarks.</p>
+                <p>Strong execution across all three pipelines with clear, credible benchmarks and accuracy that holds vs Basic RAG.</p>
                 <div className="perks">
                   <span className="badge">Cash prize</span>
                   <span className="badge">Runner-up certificate</span>
@@ -178,7 +179,7 @@ export default function PrizesPage() {
                 <div className="amt">$100</div>
                 <div className="cur">≈ ₹9,399 INR</div>
                 <h3>Strong Graph Utilization</h3>
-                <p>Best use of multi-hop reasoning and graph-aware retrieval to keep token counts honest.</p>
+                <p>Strong graph utilization and efficient inference design — best use of multi-hop reasoning to keep tokens honest while accuracy holds.</p>
                 <div className="perks">
                   <span className="badge">Cash prize</span>
                   <span className="badge">3rd place certificate</span>
@@ -208,14 +209,13 @@ export default function PrizesPage() {
                     <path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
                   </svg>
                 </div>
-                <div className="rank">Best Content Creator · Video Submission</div>
+                <div className="rank">Content Creation Bounty · Separate sign-up</div>
                 <div className="amt">$100</div>
                 <div className="cur">≈ ₹9,399 INR</div>
-                <h3>Best Hackathon Video</h3>
-                <p>For the participant or team with the best video submission — demo walkthroughs, build-in-public clips, or project showcases. Substance and craft both count. Tag <b style={{ color: 'var(--ink)' }}>#GraphRAGHackathon</b> and <b style={{ color: 'var(--ink)' }}>@TigerGraphDB</b> so we can find it.</p>
+                <h3>Content Bounty</h3>
+                <p>Earn extra by sharing your hackathon journey. Create blog posts, social posts, video walkthroughs, or tutorials about your GraphRAG build and stand a chance to win a $100 bounty. Tag <b style={{ color: 'var(--ink)' }}>#GraphRAGInferenceHackathon</b> and <b style={{ color: 'var(--ink)' }}>@TigerGraph</b>. Sign up separately on Luma.</p>
                 <div className="perks">
-                  <span className="badge orange">Cash prize</span>
-                  <span className="badge orange">Creator certificate</span>
+                  <a href={SITE.contentBountyUrl} target="_blank" rel="noopener" className="badge orange" style={{ textDecoration: 'none' }}>Sign up on Luma →</a>
                   <span className="badge">Reshared by TigerGraph</span>
                 </div>
               </div>
@@ -246,7 +246,7 @@ export default function PrizesPage() {
           <div style={{ marginTop: 100 }}>
             <span className="eyebrow"><span className="line"></span>What judges look for<span className="line"></span></span>
             <h2 className="mt-2">Judging criteria</h2>
-            <p className="lead mt-3">Six weighted criteria. Total: 100%. Build something that would survive Monday morning in a real engineering org.</p>
+            <p className="lead mt-3">Four weighted criteria, totalling 100%. Token reduction only counts if accuracy holds — a 70% token cut with 20% accuracy loss is a regression, not a win.</p>
             <div className="judging-table">
               <table>
                 <thead>
@@ -258,64 +258,76 @@ export default function PrizesPage() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="crit">Inference Cost Reduction</td>
+                    <td className="crit">Token Reduction</td>
                     <td className="wt">30%</td>
-                    <td className="desc">Real, measurable token and compute reduction.</td>
+                    <td className="desc">% improvement in tokens and cost per query vs Basic RAG. Show us the numbers.</td>
                   </tr>
                   <tr>
-                    <td className="crit">Reasoning Quality</td>
+                    <td className="crit">Answer Accuracy</td>
+                    <td className="wt">30%</td>
+                    <td className="desc">Quality maintained or improved vs Basic RAG. Evaluated with LLM-as-a-Judge + BERTScore.</td>
+                  </tr>
+                  <tr>
+                    <td className="crit">Performance</td>
                     <td className="wt">20%</td>
-                    <td className="desc">Accuracy, completeness, and explainability.</td>
+                    <td className="desc">Latency, throughput, and overall system efficiency. A fast pipeline matters as much as a cheap one.</td>
                   </tr>
                   <tr>
-                    <td className="crit">Performance &amp; Efficiency</td>
-                    <td className="wt">15%</td>
-                    <td className="desc">Latency, throughput, system efficiency.</td>
-                  </tr>
-                  <tr>
-                    <td className="crit">Graph Utilization Depth</td>
-                    <td className="wt">15%</td>
-                    <td className="desc">Effective use of multi-hop reasoning, not just lookups.</td>
-                  </tr>
-                  <tr>
-                    <td className="crit">Architecture Design</td>
-                    <td className="wt">10%</td>
-                    <td className="desc">Clean separation aligned with the AI Factory model.</td>
-                  </tr>
-                  <tr>
-                    <td className="crit">Reusability / Production Potential</td>
-                    <td className="wt">10%</td>
-                    <td className="desc">Could this scale to a real product?</td>
+                    <td className="crit">Engineering &amp; Storytelling</td>
+                    <td className="wt">20%</td>
+                    <td className="desc">Clean architecture, working dashboard, clear demo video, blog post that tells the story.</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
+            <div style={{ marginTop: 28, padding: '24px 28px', borderRadius: 14,
+              border: '1px solid rgba(255,107,44,0.28)',
+              background: 'linear-gradient(135deg, rgba(255,107,44,0.06), rgba(77,217,255,0.03))' }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--orange-soft)', marginBottom: 8 }}>Bonus points · Accuracy</div>
+              <p style={{ color: 'var(--ink-dim)', fontSize: 14.5, lineHeight: 1.6 }}>
+                Strong accuracy is heavily rewarded. Submissions hitting these bars earn extra points: <b style={{ color: 'var(--ink)' }}>LLM-as-a-Judge pass rate ≥ 90%</b> and <b style={{ color: 'var(--ink)' }}>BERTScore F1 rescaled ≥ 0.55</b> (or raw ≥ 0.88). Hitting both unlocks the maximum bonus.
+              </p>
+            </div>
+
             <div className="deliv">
               <div className="head">
                 <h3>Required deliverables</h3>
-                <span className="sub">What every team submits</span>
+                <span className="sub">All submissions go through Unstop</span>
               </div>
               <ul>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <div><b>Architecture diagram</b><span>— AI Factory layers, labeled</span></div>
+                  <div><b>Architecture diagram</b><span>— clean visual of your system</span></div>
                 </li>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <div><b>Cost comparison table</b><span>— LLM-only vs. Graph + LLM</span></div>
+                  <div><b>Comparison dashboard</b><span>— side-by-side metrics for all 3 pipelines</span></div>
                 </li>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <div><b>Token usage analysis</b><span>— per-query breakdown</span></div>
+                  <div><b>Benchmark report</b><span>— tokens, cost, latency, accuracy per pipeline</span></div>
                 </li>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <div><b>Performance evaluation</b><span>— latency, throughput, accuracy</span></div>
+                  <div><b>Demo video</b><span>— 5–7 minute walkthrough</span></div>
                 </li>
                 <li>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  <div><b>Demo / walkthrough</b><span>— recorded video of both pipelines</span></div>
+                  <div><b>Public GitHub repo</b><span>— built on the TigerGraph GraphRAG repo</span></div>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <div><b>Blog post</b><span>— Medium, Hashnode, Dev.to, or your own</span></div>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <div><b>Social media post</b><span>— LinkedIn / X · tag @TigerGraph #GraphRAGInferenceHackathon</span></div>
+                </li>
+                <li>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  <div><b>Product feedback interview</b><span>— short call with TigerGraph (Top 5–10 only)</span></div>
                 </li>
               </ul>
             </div>
